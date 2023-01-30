@@ -53,11 +53,6 @@ class Car(db.Model):
     def year(self, year):
         self._year = year
 
-    #Calculating Depreciation
-    def calculate_depreciation(self, years):
-        depreciation = 0.9**years * self._price
-        return depreciation
-
     def dictionary(self):
         dict = {
             "make" : self.make,
