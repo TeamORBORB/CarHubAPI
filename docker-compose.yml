@@ -1,0 +1,9 @@
+version: '3'
+services:
+        web:
+                build: .
+                ports:
+                        - "8069:8069"
+                volumes:
+                        - ./volumes:/volumes
+                restart: unless-stopped
