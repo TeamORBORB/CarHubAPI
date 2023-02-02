@@ -83,7 +83,7 @@ class Car(db.Model):
             "make" : self.make,
             "model" : self.model,
             "price" : self.price,
-            "year" : self.year,
+            "year" : self.year
         }
 
     # CRUD update: updates user name, password, phone
@@ -108,6 +108,7 @@ class Car(db.Model):
         db.session.commit()
         return None
 
+# Class based off of users.py
 def initCars():
     """Create database and tables"""
     db.create_all()
