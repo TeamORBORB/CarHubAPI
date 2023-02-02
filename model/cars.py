@@ -5,7 +5,6 @@ from sqlalchemy.exc import IntegrityError
 
 
 class Car(db.Model):
-
     __tablename__ = "cars"
     id = db.Column(db.Integer, primary_key=True)
     _make = db.Column(db.String(255), nullable=False, unique = False)
@@ -131,6 +130,4 @@ def initCars():
             db.session.remove()
             print(f"Records exist, duplicate email, or error: {car.id}")
             
-
-
-
+            
