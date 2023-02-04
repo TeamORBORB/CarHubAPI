@@ -1,16 +1,17 @@
-<!-- <html>
+<html>
 <head>
     <title>Cars</title>
 </head>
 <body>
     <h1>Cars</h1>
+    <h2>Flask-Cars</h2>
     <table>
         <thead>
             <tr>
                 <th>Make</th>
                 <th>Model</th>
                 <th>Year</th>
-                <th>Details</th>
+                <th>Price</th>
             </tr>
         </thead>
         <tbody>
@@ -19,10 +20,101 @@
                 <td>{{ car.make }}</td>
                 <td>{{ car.model }}</td>
                 <td>{{ car.year }}</td>
-                <td><a href="{{ url_for('carID', id=car.id) }}">View</a></td>
+                <td>{{ car.price }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    <!-- <h3>JavaScript-Cars</h3>
+
+      <table>
+        <thead>
+        <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody id="result">
+          <!-- generated rows -->
+        <!-- </tbody>
+      </table>
+       -->
+      <!-- Script is layed out in a sequence (no function) and will execute when page is loaded -->
+      <!-- <script>
+        // prepare HTML result container for new output
+        const resultContainer = document.getElementById("result");
+      
+        // prepare fetch options
+        const url = "http://127.0.0.1:8069/api/cars/";
+        const headers = {
+          method: 'GET', // *GET, POST, PUT, DELETE, etc.
+          mode: 'cors', // no-cors, *cors, same-origin
+          cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+          credentials: 'omit', // include, *same-origin, omit
+          headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        };
+     
+        // fetch the API
+        fetch(url, headers)
+          // response is a RESTful "promise" on any successful fetch
+          .then(response => {
+            // check for response errors
+            if (response.status !== 200) {
+                const errorMsg = 'Database response error: ' + response.status;
+                console.log(errorMsg);
+                const tr = document.createElement("tr");
+                const td = document.createElement("td");
+                td.innerHTML = errorMsg;
+                tr.appendChild(td);
+                resultContainer.appendChild(tr);
+                return;
+            }
+            // valid response will have json data
+            response.json().then(data => {
+                console.log(data);      
+                // Country data
+                for (const row of data) {
+      
+                  // tr for each row
+                  const tr = document.createElement("tr");
+                  // td for each column
+                  const make = document.createElement("td");
+                  const model = document.createElement("td");
+                  const year = document.createElement("td");
+                  const price = document.createElement("td");
+      
+                  // data is specific to the API
+                  make.innerHTML = row.make;
+                  model.innerHTML = row.model; 
+                  year.innerHTML = row.year; 
+                  price.innerHTML = row.price; 
+      
+                  // this builds td's into tr
+                  tr.appendChild(make);
+                  tr.appendChild(model);
+                  tr.appendChild(year);
+                  tr.appendChild(price);
+      
+                  // add HTML to container
+                  resultContainer.appendChild(tr);
+                }
+            })
+        })
+        // catch fetch errors (ie ACCESS to server blocked)
+        .catch(err => {
+          console.error(err);
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.innerHTML = err;
+          tr.appendChild(td);
+          resultContainer.appendChild(tr);
+        }); -->
+      </script>
+
 </body>
-</html> -->
+</html>
