@@ -5,7 +5,6 @@ from sqlalchemy.exc import IntegrityError
 
 
 class Car(db.Model):
-
     __tablename__ = "cars"
     id = db.Column(db.Integer, primary_key=True)
     _make = db.Column(db.String(255), nullable=False, unique = False)
@@ -67,7 +66,7 @@ class Car(db.Model):
 
     def create(self):
         try:
-            # creates a person object from User(db.Model) class, passes initializers
+            # creates a Car object from User(db.Model) class, passes initializers
             db.session.add(self)  # add prepares to persist person object to Users table
             db.session.commit()  # SqlAlchemy "unit of work pattern" requires a manual commit
             return self
@@ -83,7 +82,7 @@ class Car(db.Model):
             "make" : self.make,
             "model" : self.model,
             "price" : self.price,
-            "year" : self.year,
+            "year" : self.year
         }
 
     # CRUD update: updates user name, password, phone
@@ -108,6 +107,7 @@ class Car(db.Model):
         db.session.commit()
         return None
 
+# Function based off of users.py
 def initCars():
     """Create database and tables"""
     db.create_all()
@@ -130,6 +130,4 @@ def initCars():
             db.session.remove()
             print(f"Records exist, duplicate email, or error: {car.id}")
             
-
-
-
+            

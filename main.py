@@ -43,8 +43,12 @@ def stub():
 
 @app.route('/cars/')  
 def car():
-    return render_template("cars.html")
+    url = "http://127.0.0.1:8069/api/cars/"
 
+    response = requests.request("GET", url)
+
+    output = response.json()
+    return render_template("cars.html", cars=output)
 
 
 @app.before_first_request
