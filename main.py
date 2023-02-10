@@ -1,11 +1,8 @@
-import threading
-import requests
 # import "packages" from flask
 from flask import render_template  # import render_template from "public" flask libraries
 
 # import "packages" from "this" project
 from __init__ import app  # Definitions initialization
-from model.jokes import initJokes
 from model.users import initUsers
 from model.cars import initCars
 
@@ -52,12 +49,12 @@ def car():
 
 @app.before_first_request
 def activate_job():
-    initJokes()
     initUsers()
     initCars()
 
 # this runs the application on the development server
 if __name__ == "__main__":
     # change name for testing
+    from flask_cors import CORS
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///volumes/sqlite.db'
-    app.run(debug=True, host="127.0.0.1", port="8069")
+    app.run(debug=True, host="127.0.0.1", port="8061")
